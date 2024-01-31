@@ -1,0 +1,77 @@
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\test.exe
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\test.deps.json
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\test.runtimeconfig.json
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.AssemblyInfoInputs.cache
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.AssemblyInfo.cs
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.csproj.CoreCompileInputs.cache
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\refint\test.dll
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.genruntimeconfig.cache
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\ref\test.dll
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\bin\Debug\net8.0\CsvHelper.dll
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.csproj.AssemblyReference.cache
+C:\Users\Dylan Ho\dxd\AzureDevops\excelExport\test\obj\Debug\net8.0\test.csproj.CopyComplete
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.csproj.AssemblyReference.cache
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.AssemblyInfoInputs.cache
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.AssemblyInfo.cs
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.csproj.CoreCompileInputs.cache
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\refint\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\test.exe
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\test.deps.json
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\test.runtimeconfig.json
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\CsvHelper.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.csproj.CopyComplete
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\test.genruntimeconfig.cache
+C:\Users\Dylan Ho\dxd\excelExport\test\obj\Debug\net8.0\ref\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\SendGrid.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\SendGrid.Extensions.DependencyInjection.dll
+C:\Users\Dylan Ho\dxd\excelExport\test\bin\Debug\net8.0\StarkbankEcdsa.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\test.exe
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\test.deps.json
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\test.runtimeconfig.json
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\CsvHelper.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Configuration.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\SendGrid.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\SendGrid.Extensions.DependencyInjection.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\bin\Debug\net8.0\StarkbankEcdsa.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.csproj.AssemblyReference.cache
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.AssemblyInfoInputs.cache
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.AssemblyInfo.cs
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.csproj.CoreCompileInputs.cache
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.csproj.CopyComplete
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\refint\test.dll
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.pdb
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\test.genruntimeconfig.cache
+C:\Users\Dylan Ho\dxd\excelExport\downloading code\obj\Debug\net8.0\ref\test.dll
