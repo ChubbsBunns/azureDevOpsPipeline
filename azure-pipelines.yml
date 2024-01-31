@@ -35,6 +35,6 @@ steps:
   inputs:
       command: 'custom'
       custom: 'run'
-      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $KEY_ONE'
+      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $(key)'
   env:
       KEY_ONE: $(keyOne)
