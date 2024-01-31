@@ -10,10 +10,10 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
- - group: keyValues
- - solution: '**/*.sln'
- - buildPlatform: 'Any CPU'
- - buildConfiguration: 'Release'
+  group: keyValues
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
