@@ -34,4 +34,4 @@ steps:
   inputs:
       command: 'custom'
       custom: 'run'
-      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $(key) '
+      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: -$(key) '
