@@ -31,5 +31,5 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: "Run Da App"
   inputs:
-    command: custom
-    custom: "run OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisIsProbsWrong"
+    command: run
+   
