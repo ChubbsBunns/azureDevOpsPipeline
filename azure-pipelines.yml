@@ -10,6 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
+ - group: keyValues
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
@@ -33,4 +34,4 @@ steps:
   inputs:
       command: 'custom'
       custom: 'run'
-      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisWrongToken '
+      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $(key) '
