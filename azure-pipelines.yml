@@ -32,5 +32,5 @@ steps:
   displayName: "Run Da App"
   inputs:
       command: 'custom'
-      custom: 'tool'
-      arguments: 'run OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisWrongToken '
+      custom: 'run'
+      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisWrongToken '
