@@ -16,8 +16,6 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- env:
-    KEY_ONE: $(keyOne)
 
 - task: NuGetToolInstaller@1
 
@@ -38,3 +36,5 @@ steps:
       command: 'custom'
       custom: 'run'
       arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $KEY_ONE'
+      - env:
+        KEY_ONE: $(keyOne)
