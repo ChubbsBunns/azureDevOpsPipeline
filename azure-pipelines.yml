@@ -32,4 +32,4 @@ steps:
   displayName: "Run Da App"
   inputs:
     command: custom
-    custom: run OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisIsProbsWrong 
+    custom: "run OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: thisIsProbsWrong"
