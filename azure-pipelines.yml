@@ -16,7 +16,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  env:
+- env:
     KEY_ONE: $(keyOne)
 
 - task: NuGetToolInstaller@1
