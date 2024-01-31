@@ -36,5 +36,4 @@ steps:
       command: 'custom'
       custom: 'run'
       arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: $KEY_ONE'
-      - env:
-        KEY_ONE: $(keyOne)
+      - env: KEY_ONE: $(keyOne)
