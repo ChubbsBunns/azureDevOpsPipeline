@@ -35,4 +35,4 @@ steps:
   inputs:
       command: 'custom'
       custom: 'run'
-      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: ${{keyValues.key}}'
+      arguments: ' OrganisationName: troskproductions ProjectName: New Project PersonalAccessToken: ${{variables.key}}'
