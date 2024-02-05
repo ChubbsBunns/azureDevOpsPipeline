@@ -36,3 +36,6 @@ steps:
       command: 'custom'
       custom: 'run'
       arguments: ' OrganisationName: tp-hosjd ProjectName: New Project PersonalAccessToken: $(keyVariable)'
+
+- publish: $(System.DefaultWorkingDirectory)/test.csv
+  artifact: WebApp
