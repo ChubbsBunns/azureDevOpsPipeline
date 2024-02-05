@@ -39,3 +39,6 @@ steps:
 
 - publish: $(System.DefaultWorkingDirectory)/test.csv
   artifact: WebApp
+
+- download: current
+  artifact: WebApp
