@@ -1,21 +1,8 @@
-
-
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Net.Mail;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-
-using System;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using SendGrid.Extensions.DependencyInjection;
-using System.Net.NetworkInformation;
 using Newtonsoft.Json;
-using Microsoft.VisualBasic;
 
 using System.Text.RegularExpressions;
-using System.Reflection.Metadata.Ecma335;
 
 const string USER_NEED_WORK_ITEM = "User Need";
 const string DESIGN_INPUT_WORK_ITEM = "Design Input";
@@ -36,6 +23,8 @@ const string SDD_ID_FIELD = "System.Description";
 const string SDV_ID_FIELD = "Custom.SDVID";
 const string FIELD = "fields";
 
+const string FILENAME = "workItem_TraceabilityMatrix.csv";
+
 var rawDataFromProject = "";
 string ERROR_FILE_PATH = "error.txt";
 
@@ -44,14 +33,12 @@ string projectName = "";
 string personalAccessToken = "";
 
 
+
 try
 	{
-        
-        //getUserInputs(ref organisationName, ref projectName, ref personalAccessToken);
         string[] arguments = Environment.GetCommandLineArgs(); 
         getUserInputs(ref organisationName, ref projectName, ref personalAccessToken, arguments);
         string getRequestUrl = parseGetRequestURL(projectName, organisationName);
-        Console.WriteLine(getRequestUrl);
         rawDataFromProject = getAzureDevOpsData(personalAccessToken, getRequestUrl).GetAwaiter().GetResult();
 	}
 	catch (Exception ex)
@@ -67,20 +54,20 @@ try
     //Data structures used
 
     //A lookup table of each work items id with their children work item ids.
-    Dictionary<String, List<String>> workItemsData = new Dictionary<String, List<String>>();
+    Dictionary<string, List<string>> workItemsData = new Dictionary<string, List<string>>();
 
 
     //A lookup table of each work item id with their corresponding work item type.
-    Dictionary<String, String> workItemTypeLookup = new Dictionary<string, string>();
+    Dictionary<string, string> workItemTypeLookup = new Dictionary<string, string>();
 
     //A lookup table of each work item id with whether they have been added to the table or not.
-    Dictionary<String, bool> workItemAdded = new Dictionary<string, bool>();
+    Dictionary<string, bool> workItemAdded = new Dictionary<string, bool>();
 
-    //A 2D array containing the data to be appended to the excel file.
-    String[][] excelData = [];
+//A 2D array containing the data to be appended to the excel file.
+    string[][] excelData = [];
 
     //An iterable stack that helps with populating each row in the excel file.
-    List<String> workItemIdsToAdd = [];
+    List<string> workItemIdsToAdd = [];
 
     string jsonRawWorkItemIds = await GetBuiltInWorkItemIds(personalAccessToken, organisationName, projectName);
     List<int> indexIds = ExtractWorkItemIds(jsonRawWorkItemIds);
@@ -95,6 +82,7 @@ try
             workItemCustomIdLookup.Add(newPair.Key, newPair.Value);
         }
     } catch {
+        Console.WriteLine("There was an error in adding the values to workItemCustomIdLookup, below are the added items before the error.");
         foreach (KeyValuePair<string, string> pair in workItemCustomIdLookup)
         {
             Console.WriteLine(pair.Value);
@@ -102,14 +90,11 @@ try
     }
 
     populateDefaultVariables(ref workItemsData, ref workItemTypeLookup, ref workItemAdded, ref excelData, ref rawDataFromProject, workItemCustomIdLookup);
-    organiseExcelSheetData(workItemTypeLookup, workItemsData, ref workItemAdded, ref workItemIdsToAdd, ref excelData);
-    string fileName = "test.csv";
-    //string fileName = organisationName + "_" + projectName + "_workItem_TraceabilityMatrix.csv";
-    writeCsv(fileName, excelData);
-    // Write the data to the CSV file
-    string filePath = Path.Combine(Environment.CurrentDirectory, fileName);
-    string fileBase64 = fileToBase64(Path.GetFullPath(filePath));
-    Console.WriteLine("File path is  is: " + filePath);
+
+    organiseExcelSheetData(workItemTypeLookup, workItemsData, ref workItemAdded, ref workItemIdsToAdd, ref excelData, workItemCustomIdLookup);
+    
+    writeCsv(FILENAME, excelData);
+    string filePath = Path.Combine(Environment.CurrentDirectory, FILENAME);
 
 
 
@@ -200,24 +185,24 @@ static void populateDefaultVariables(ref Dictionary<String, List<String>> workIt
     List<WorkItem> workItems = System.Text.Json.JsonSerializer.Deserialize<List<WorkItem>>(extractedValue);
     excelData = [.. excelData, [USER_NEED_WORK_ITEM, DESIGN_INPUT_WORK_ITEM, SRS_WORK_ITEM, TASK_WORK_ITEM, TEST_CASE_WORK_ITEM]];
     foreach (var workItem in workItems) {
-        List<String> children = new List<string>();
+        List<string> children = new List<string>();
         for (int i = 0; i < workItem.Children.Count; i++) {
-            children.Add(updateIdLookupTable[workItem.Children[i].WorkItemId.ToString()]);
+            children.Add(workItem.Children[i].WorkItemId.ToString());
         }
-        workItemsData.Add(updateIdLookupTable[workItem.WorkItemId.ToString()], children);
-        workItemTypeLookup.Add(updateIdLookupTable[workItem.WorkItemId.ToString()], workItem.WorkItemType);
-        workItemAdded.Add(updateIdLookupTable[workItem.WorkItemId.ToString()], false);
+        workItemsData.Add(workItem.WorkItemId.ToString(), children);
+        workItemTypeLookup.Add(workItem.WorkItemId.ToString(), workItem.WorkItemType);
+        workItemAdded.Add(workItem.WorkItemId.ToString(), false);
     }
-} 
+}
 
 // Organizes the data in excelData into a cascading sheet where all parents are 
 // All non main work item types are added in "Other Work Items"
-static void organiseExcelSheetData(Dictionary<string, string> workItemTypeLookup, Dictionary<string, List<string>> workItemsData, ref Dictionary<string, bool> workItemAdded, ref List<string> workItemIdsToAdd, ref string[][] excelData) {
+static void organiseExcelSheetData(Dictionary<string, string> workItemTypeLookup, Dictionary<string, List<string>> workItemsData, ref Dictionary<string, bool> workItemAdded, ref List<string> workItemIdsToAdd, ref string[][] excelData, Dictionary<string, string> workItemCustomIdLookup) {
     string[] workItemTypes = [USER_NEED_WORK_ITEM, DESIGN_INPUT_WORK_ITEM, SRS_WORK_ITEM, TASK_WORK_ITEM, TEST_CASE_WORK_ITEM];
     foreach (string workItemType in workItemTypes) {
-        foreach (KeyValuePair<String, String> ele in workItemTypeLookup) {
+        foreach (KeyValuePair<string, string> ele in workItemTypeLookup) {
             if (ele.Value == workItemType && workItemAdded[ele.Key] == false) {
-                appendItems(workItemsData, ref workItemAdded, workItemIdsToAdd, ref excelData, ele.Key);
+                appendItems(workItemsData, ref workItemAdded, workItemIdsToAdd, ref excelData, ele.Key, workItemCustomIdLookup);
             }
         }
         workItemIdsToAdd.Add("");          
@@ -233,7 +218,7 @@ static void organiseExcelSheetData(Dictionary<string, string> workItemTypeLookup
     }
 }
 
-static async Task<String> GetBuiltInWorkItemIds(string personalAccessToken, string organisationName, string projectName)
+static async Task<string> GetBuiltInWorkItemIds(string personalAccessToken, string organisationName, string projectName)
 {
     string responseBody = "";
 	try
@@ -252,7 +237,7 @@ static async Task<String> GetBuiltInWorkItemIds(string personalAccessToken, stri
 			{
     			response.EnsureSuccessStatusCode();
                 responseBody = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseBody);
+
 			}
 		}
 	}
@@ -267,7 +252,6 @@ static async Task<KeyValuePair<string, string>> GetSpecificWorkItemID(string per
 {
     string key = "";
     string value = "";
-
 	try
 	{
 		using (HttpClient client = new HttpClient())
@@ -332,7 +316,6 @@ static string GetCustomWorkID(dynamic parsedResponse) {
         string replacement = "";
         Regex regex = new Regex(pattern);
         string result = regex.Replace(input, replacement);
-
         return result;
     }
 
@@ -348,16 +331,8 @@ static StreamWriter writeCsv(string filePath, params string[][] rows)
     }
 }
 
-static string fileToBase64(string filePath) {
-    byte[] fileBytes = File.ReadAllBytes(filePath);
-
-    // Convert the file bytes to Base64
-    string base64String = Convert.ToBase64String(fileBytes);
-    return base64String;
-}
-
 // Takes in data, and using the lookup table it stores the values in a table (2d array) foreach initial item in excelData
-static void appendItems(Dictionary<String, List<String>> workItemsData, ref Dictionary<String, bool> workItemAdded, List<String> workItemIdsToAdd,ref String[][] excelData, String idToCheck) {
+static void appendItems(Dictionary<String, List<String>> workItemsData, ref Dictionary<String, bool> workItemAdded, List<String> workItemIdsToAdd,ref String[][] excelData, String idToCheck, Dictionary<string, string> workItemCustomIdLookup) {
     List<String> children = [];
     workItemIdsToAdd.Add(idToCheck);
     workItemAdded[idToCheck] = true;
@@ -370,9 +345,14 @@ static void appendItems(Dictionary<String, List<String>> workItemsData, ref Dict
         // If we are at the leaf of the tree(no more children), this means that this is one row/"branch" in the excel sheet we need to store.            
         if (children.Any() == false) {
             string[] currentRow = [];
-            //Append all data from the workItemsIdsToAdd to a String array
+            //Append all data from the workItemsIdsToAdd to an array of strings 
             foreach (var i in workItemIdsToAdd) {
-                currentRow = [.. currentRow, i];
+                if ( i != "") {
+                    currentRow = [.. currentRow, workItemCustomIdLookup[i]];
+                } else {
+                    currentRow = [.. currentRow, ""];
+                }
+
             }
             // Append current branch to the excel sheet data
             excelData = [.. excelData, currentRow];       
@@ -382,7 +362,7 @@ static void appendItems(Dictionary<String, List<String>> workItemsData, ref Dict
         // Not at a leaf node, continue deeper into the current branch
         else {
             foreach (var child in children) {
-                appendItems(workItemsData, ref workItemAdded, workItemIdsToAdd, ref excelData, child);
+                appendItems(workItemsData, ref workItemAdded, workItemIdsToAdd, ref excelData, child, workItemCustomIdLookup);
             }
             workItemIdsToAdd.RemoveAt(workItemIdsToAdd.Count - 1);
         }
@@ -398,7 +378,6 @@ static List<int> ExtractWorkItemIds(string json)
         var data = JsonConvert.DeserializeObject<RootObject>(json);
         var workItems = data?.value ?? new List<WorkItemIdInteger>();
         var workItemIds = new List<int>();
-
         foreach (var workItem in workItems)
         {
             workItemIds.Add(workItem.WorkItemId);
@@ -434,6 +413,9 @@ public class WorkItem
     {
         public int WorkItemId { get; set; }
     }
+
+
+
 
 
 
