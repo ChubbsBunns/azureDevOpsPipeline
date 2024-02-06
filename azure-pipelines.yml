@@ -35,10 +35,10 @@ steps:
   inputs:
       command: 'custom'
       custom: 'run'
-      arguments: ' OrganisationName: tp-hosjd ProjectName: New Project PersonalAccessToken: $(keyVariable)'
+      arguments: ' OrganisationName: $(organisationName) ProjectName: $(projectName) PersonalAccessToken: $(keyVariable)'
 
-- publish: $(System.DefaultWorkingDirectory)/test.csv
-  artifact: WebApp
+- publish: $(System.DefaultWorkingDirectory)/workItem_TraceabilityMatrix.csv
+  artifact: TraceabilityMatrixFolder
 
 - download: current
-  artifact: WebApp
+  artifact: TraceabilityMatrixFolder
