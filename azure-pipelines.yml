@@ -31,7 +31,7 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: "Run Da App"
+  displayName: "Run Application"
   inputs:
       command: 'custom'
       custom: 'run'
